@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>LUMĒ — Shop</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="navbar">
+    <div class="nav-logo">LUMĒ</div>
+    <div class="nav-links">
+      <a href="index.html" class="active">Shop</a>
+      <a href="cart.html">Cart</a>
+      <a href="checkout.html">Checkout</a>
+    </div>
+    <div class="nav-actions">
+      <button class="dark-toggle" id="darkToggle" title="Toggle dark mode">🌙</button>
+      <a href="cart.html" class="cart-icon">
+        🛒 <span class="cart-count" id="cartCount">0</span>
+      </a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-text">
+      <p class="hero-sub">New Collection 2025</p>
+      <h1>Curated<br/><em>Essentials.</em></h1>
+      <p class="hero-desc">Objects that belong in your life.</p>
+    </div>
+    <div class="hero-blob"></div>
+  </section>
+
+  <!-- NOTIFICATION -->
+  <div class="notification" id="notification">
+    <span id="notifText">Added to cart!</span>
+  </div>
+
+  <!-- PRODUCTS -->
+  <main class="products-section">
+    <div class="section-header">
+      <h2>All Products</h2>
+      <div class="filter-bar">
+        <button class="filter-btn active" data-filter="all">All</button>
+        <button class="filter-btn" data-filter="audio">Audio</button>
+        <button class="filter-btn" data-filter="home">Home</button>
+        <button class="filter-btn" data-filter="wear">Wear</button>
+      </div>
+    </div>
+    <div class="products-grid" id="productsGrid"></div>
+  </main>
+
+  <footer class="footer">
+    <span>© 2025 LUMĒ. Crafted with care.</span>
+  </footer>
+
+  <script src="script.js"></script>
+  <script>
+    renderProducts();
+    updateCartCount();
+  </script>
+</body>
+</html>
