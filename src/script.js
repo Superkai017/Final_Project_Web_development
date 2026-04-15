@@ -1,5 +1,5 @@
 /* =============================================
-   LUMĒ — script.js
+   SneakerVault — script.js
    All cart logic, products, dark mode, UI
    ============================================= */
 
