@@ -1,6 +1,6 @@
-# LUMĒ — Simple Shopping Cart Website
+# SneakerVault - An Online Sneaker Marketplace
 
-LUMĒ is a clean, responsive shopping cart website built with pure HTML, CSS, and JavaScript — no frameworks or build tools required. The project was designed as a hands-on web development exercise covering the core concepts of DOM manipulation, dynamic rendering, and client-side data persistence. Users can browse a curated product catalog, filter items by category, add products to their cart, adjust quantities, and proceed through a full checkout flow. All cart data is automatically saved to the browser's LocalStorage, meaning items are preserved even after the page is refreshed or closed. The interface features a dark mode toggle, smooth CSS animations, popup notifications, and a fully responsive layout that works seamlessly on mobile, tablet, and desktop screens. The checkout page includes a shipping and payment form with a success modal that confirms the order upon completion. The codebase is intentionally kept simple and well-organized across separate files for structure, styling, and logic, making it easy to read, extend, and learn from.
+SneakerVault is a clean, responsive sneaker shopping website built with pure HTML, CSS, and JavaScript — no frameworks or build tools required. The project was designed as a hands-on web development exercise covering the core concepts of DOM manipulation, dynamic rendering, and client-side data persistence. Users can browse a curated product catalog, filter items by category, add products to their cart, adjust quantities, and proceed through a full checkout flow. All cart data is automatically saved to the browser's LocalStorage, meaning items are preserved even after the page is refreshed or closed. The interface features a dark mode toggle, smooth CSS animations, popup notifications, and a fully responsive layout that works seamlessly on mobile, tablet, and desktop screens. The checkout page includes a shipping and payment form with a success modal that confirms the order upon completion. The codebase is intentionally kept simple and well-organized across separate files for structure, styling, and logic, making it easy to read, extend, and learn from.
 
 ---
 
@@ -40,8 +40,8 @@ project/
 | **ART OUDOM** | Project Lead & JavaScript Logic |
 | **LY CHANTHANOU** | UI Design & CSS Styling |
 | **SOY OUSA** | HTML Structure & Page Layout |
-| **HENG PANHA** | Cart & LocalStorage Implementation |
-| **VUTH** | Testing, Responsive Design & Dark Mode |
+| **HENG PANHAVUTH** | Cart & LocalStorage Implementation |
+| **HENG PANHAVUTH** | Testing, Responsive Design & Dark Mode |
 
 ---
 
