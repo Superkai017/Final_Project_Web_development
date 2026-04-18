@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>SneakerVault — Cart</title>
+  <!-- Apply theme before paint to prevent flash -->
+  <script>
+    (function() {
+      var t = localStorage.getItem('theme') || 'light';
+      document.documentElement.setAttribute('data-theme', t);
+    })();
+  </script>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+</head>
+<body>
+
+  <nav class="navbar">
+    <div class="nav-logo">SneakerVault</div>
+    <div class="nav-links">
+      <a href="index.html">Shop</a>
+      <a href="cart.html" class="active">Cart</a>
+      <a href="checkout.html">Checkout</a>
+    </div>
+    <div class="nav-actions">
+      <button class="dark-toggle" id="darkToggle" title="Toggle dark mode">🌙</button>
+      <a href="cart.html" class="cart-icon">
+        🛒 <span class="cart-count" id="cartCount">0</span>
+      </a>
+    </div>
+  </nav>
+
+  <main class="cart-page">
+    <h1 class="page-title">Your <em>Cart</em></h1>
+    <div class="cart-layout">
+      <div class="cart-items" id="cartItems">
+        <!-- Populated by JS -->
+      </div>
+      <aside class="cart-summary">
+        <h3>Order Summary</h3>
+        <div class="summary-row"><span>Subtotal</span><span id="subtotal">$0.00</span></div>
+        <div class="summary-row"><span>Shipping</span><span>Free</span></div>
+        <div class="summary-row total"><span>Total</span><span id="totalPrice">$0.00</span></div>
+        <a href="checkout.html" class="btn-primary" id="checkoutBtn">Proceed to Checkout</a>
+        <button class="btn-ghost" id="clearCartBtn">Clear Cart</button>
+      </aside>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <span>© 2026 SneakerVault.</span>
+  </footer>
+
+  <script src="script.js"></script>
+  <script>
+    renderCart();
+    updateCartCount();
+  </script>
+</body>
+</html>
