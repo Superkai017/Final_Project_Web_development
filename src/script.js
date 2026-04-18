@@ -1,5 +1,5 @@
 /* =============================================
-   SneakerVault — script.js
+   LUMĒ — script.js
    All cart logic, products, dark mode, UI
    ============================================= */
 
@@ -7,69 +7,354 @@
 // PRODUCT DATA
 // =============================================
 const PRODUCTS = [
+  // JORDAN
   {
     id: 1,
-    name: "Jordan 1 Retro High Virgil Abloh Archive Alaska",
-    category: "",
-    price: 364,
-    badge: "Bestseller",
-    img: "https://www.sneakersnstuff.com/cdn/shop/files/AA3834-100_01.jpg?v=1774956737",
+    name: "Air Jordan 1 Retro High OG 'Chicago'",
+    brand: "Jordan",
+    category: "jordan",
+    price: 320,
+    badge: "Hot",
+    img: "https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=500&q=80",
   },
   {
     id: 2,
-    name: "Nike Kobe 11 Elite Low Protro Fade to Black",
-    category: "",
-    price: 193,
+    name: "Air Jordan 4 Retro 'Military Blue'",
+    brand: "Jordan",
+    category: "jordan",
+    price: 285,
     badge: null,
-    img: "https://www.dtlr.com/cdn/shop/files/nike_IM4280_20001_M154.jpg?v=1775156191",
+    img: "https://images.unsplash.com/photo-1556906781-9a412961a28c?w=500&q=80",
   },
   {
     id: 3,
-    name: "Nike SB Dunk Low Pro Som Tum",
-    category: "",
-    price: 123,
-    badge: "New",
-    img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS2B9UaadtECAFiVITobax-GlEA25TEIX9wAA&s",
+    name: "Air Jordan 11 Retro 'Bred'",
+    brand: "Jordan",
+    category: "jordan",
+    price: 375,
+    badge: "Bestseller",
+    img: "https://images.unsplash.com/photo-1600185365483-26d7a4cc7519?w=500&q=80",
   },
   {
     id: 4,
-    name: "ASICS Gel-1130 Black Pure Silver",
-    category: "",
-    price: 49,
+    name: "Air Jordan 3 Retro 'White Cement'",
+    brand: "Jordan",
+    category: "jordan",
+    price: 260,
     badge: null,
-    img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQvXLccBG3zwoLc84tO6tCFb_qX9mKAulOxRg&s",
+    img: "https://images.unsplash.com/photo-1605348532760-6753d2c43329?w=500&q=80",
   },
+
+  // NIKE
   {
     id: 5,
-    name: "Jordan 4 Retro OG Flight Club",
-    category: "",
-    price: 126,
+    name: "Nike Air Max 95 OG Neon",
+    brand: "Nike",
+    category: "nike",
+    price: 259,
     badge: "New",
-    img: "https://www.dtlr.com/cdn/shop/files/jordan_IM4002_20100_M074.jpg?v=1768233082",
+    img: "https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=500&q=80",
   },
   {
     id: 6,
-    name: "Timberland 6 Premium Waterproof Boot Wheat",
-    category: "",
-    price: 87,
-    badge: null,
-    img: "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBxASEBASEBEQEBIQEBYQDxAQEBAQFRAQFhUWFhcYFhUZHCggGRolGxcVIjEhJSkrLi4vFx8zODMsNygtLisBCgoKDg0OGxAQGjUdHyUtKzcvLTUuLS0tKysrKy0tLS0tKy0rLS0tKzUtLS0tLS0tLS0tLS4tLS0tKy0rLS0tLf/AABEIANkA6AMBIgACEQEDEQH/xAAcAAEAAQUBAQAAAAAAAAAAAAAABwIDBAUGAQj/xAA9EAACAQICBgcGAwcFAQAAAAAAAQIDEQQhBQYSMUFRBxNhcYGRoSIjMlKxwRRT0TNCQ3KCsuFiY5KT8BX/xAAZAQEAAwEBAAAAAAAAAAAAAAAAAQMEAgX/xAAkEQEAAgIBBAEFAQAAAAAAAAAAAQIDERIEITFRExQiMkFhcf/aAAwDAQACEQMRAD8AnEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAOL131w/DrqcNaVZ5TkrS6ld3zfQ5taKxuXVazadQ6zF42lSV6tSFNc5yUfqVYTFU6sVOnOM4vJSi7rLtICr4urUm5VZSlN5uU23L14Eu9Hs74GHZOS+j+5Rj6jnfjpbkw8K726YAGlQAAAAAAAAAAAAAAAAAAAAAAAAAAAaLSmt+Aw8nGriKakt8Y3qNd6jezNb0o4mpTwDdNtbVSMZtZey7/exAGKrNt3YE3Y/pawEL9XCvVfZGME/N39Dm9IdNNTPqcLTjydSpKfokiKakzGqMDtdJ9KmlKuSrRop/kwjH1d36mNq7pFz2uucqjVTbm3K8pRlm8323OLcjeat1PetfNTfmrW+rKeorvHK3DOruu0hWvFTUaKUpy6tUXJTjTu9nrKcr2l23V+F1YlDoxxcZ4WSi09mpmuKulvRGeIpQVNShGvJbKlKrsxVFScnFwu2mpKy38+1HS9FNOf4uctpKPUSi4PKTe1G3s/ftfMxYJ1kjs05I3jnulgAHpsIAAAAAAAAAAAAAAAAAAAAAAAAAAOd6QMP1mjsSuMYqa/pkn9LnzbjJWbPqjTFDrMPXgknt0pxSldJtxe8gKnoKg0ptbW0tr2m36birLmrjjusx45v4cPKoU9TOW6Mn3RZ3DwdOGUYxXckilwXIzT1vqF8dL7lxtPRVaX7tu1tHQ6F0Z1WcneTy5WXYbGxUkU5OpteNLaYK1nbOdO1LalV6um57OxJycXUte7STSyXHjZI2OpukaNDHUJSlDZblSfB0pSy2nfNRbyfhzNXgMROE04y2Zbk8uPY8inH0lCdnKm6kG23FqbjOzXtJZp58e8qpbUxPp1au9w+gUz05XUDWWOLw0FP2cRSioV4dqVlKLWTT7Dqj2InbzpjU6kABKAAAAAAAAAAAAAAAAAAAAAAAAFNTc+5kEYaSdKPjl3SZOeMqqNOpJ5KMJSb5JJsgjAv3NJvjBS8/a+5g678Ya+l8ytVlmWJGRVLEjBDYssNsraKJHQqjOxtMJW62MKTVOykrScYpuyaW1K12km0lwWRprlyE7PIIlucBpCpg8RCtRqKOzJxq0avWU41IPZ201ZqMso5vc/WZdC6TjiaMasU4qV04txbi07NNp2IYo6S6yUOvnOSjkntXcY9l/A2ujNMYnA1ZzpQp1adT4qUKynGeyrKaslsztZWedlZmnBn4zq3hmzYuX+phBi6Mx0K9KnVptSjUipKzvZtZp9q3GUelE7YgAEgAAAAAAAAAAAAAAAAAAAAA0GveIdPR2LaybpOCf8/s/RkRSouKUYvKKsk1fJIlLpMnbR1ZfNb0vL7EXVnnllfM83rbfdENvSx9syx5Rlyv3SX3MeU+akvBmY3kW5zMkTDT3YnWrmeNovTaf+f/AHMtyox5LwyOog2tiTPXQ5Sf1KZUpc0/QnSNqoSNlhMVu+j3GqtLl5NMrjV7H5MiajtdGaYeGn+IpOU05yniMPZJdW4pPq7ZNq11lnZJkqYLFQq04VKclKFSKnCS4xauiAMNpDYks/U6/V7W6tRgoxjGVK7lFSW6+eTVuZpwZ+Ha3hnzYeXeqVwcvo/XShPKpF03zXtr0zNxS01hpbq1Pxdvqbq5qW8SyzjtHmGwBivSVD86l/2R/UsT03hlvrU/B3+h1N6x+3PGfTYg1EtZMIv4y8Izf2L+F01hqjtCrBvk7x+pEZKT+08LemwB4j07cgAAAAAAAAAAAADk+khXwij81TZfjCRFUZ3jF8bK/fufrclfpFpt4RSX7lWMn3Wa+5E19mbX7s3ePZLivHf5nl9ZG7t3TfgNlpyL0kUOBkiGna24FEosvbI2TpDHbG0y86QlSJ2hZchtFx0ylwJ5Gnlk99mZFPENZJ5GNYrSGzTLp4mXMyIYx8zW3PVNnHF02/4+XMpljnzNZtHu0OKGe8U+ZfpYto1SqHir583yWZPESpqZrC6jVGpK/wCXJ7/5WdkQpoWdWE41Pg2WpK/FrMlbV3Sn4ik5O21GWzK2Xamel0uSZjjbywZ6RE7htQAa1AAAAAAAAAAAOK1/xmcaMpWhKnttbk220s+yxHuI0bCSyqPsz3d2863pQk1Xpv8A2F/fMj2tUlcxZqbtvbZi3xZ89Hy4VF42ZZeDrLdKL8F+prJTl/qXc2exxE/ml5sp+BZylnPD1+UX5L7njp1/kXmYvXz+Z+bM3R+1OSi5Szv6K4+Ai0rPvl/Dv3S/wUTxMl8VOa7bJnZaA1UqYuE5wrKChLYTcW1J2u9z4ZeZmV9QcbH4KlKp2bTi35r7k/Tzrwj5IidTLhaePp2zbX8yaLqqU5bmu9M3mN1ZxsP2mElNc4RVT+25pa+DpJ2qUZU5cmrP1K5w6dxf13W5wXBlLK1gqHCUl4yRV/8APo/mz/5P9Tj45hPP+MZzRT1yXEyHgsPxlJ/1P9T2MMLHdBPvJ4HL+MJYyPDPuzL1OnWn8MGlzlkZqxaVtiCXgU/ipyV75PkdxjPuKejks6s13IvLFU4ZUoJvmz3Rmja+It1VKpUfG0W1HvluR1ug+jerZSxVVR4uELTk++W5epZXDMuJtWv5S5FY2U6kadpSk7WSTd29ySW9kp6jaKrUYTnVWx1iSVN71a+b5b9xt9E6Dw2G/Y04xk1Z1H7U5Ltk/obFI1Y8PHvLNlzco1EPQAXqAAAAAAAAAAAcvrjq1PFuEqcoJxjstTur53WaXecXiNQMemtmNGSv7XvN67L2JcBXbFEztbXNasahCtbUfHqWWHk1ne06b4cLMpo6kY+TfuJRSTd5uEfBZ5smwHPwx7dfUW9IToakaQk37lwtFu83BXtuSz3m51Z1Dqyqv8ZTnTgo3TjOCcpXVllfLeSmCYwwic9taYujtH0qFONOjFQhHcs3m+Lb3sygC1SGk1q0AsZRjT29hxntxk47XBpq11zN2CJjcaTEzE7hFNfo3xcW3CpRqLKyvKFrLtRhT1F0gm/dKSvk1UpWt53JjBXOGq357oXoahaRfxUYrP8AMpLK/K5s8P0aYnLarUFkm3aTab3qyVsiVD0fDVM9RdwGjejKlBLrsROpZ3ahBQv2XbZ0OA1PwFL4aEZPg6l6lu5PI3wOopWP0rnJafMqKdNRSUUopZJJJJLsRWAduAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAH//2Q==",
+    name: "Nike Dunk Low 'Panda'",
+    brand: "Nike",
+    category: "nike",
+    price: 189,
+    badge: "Popular",
+    img: "https://images.unsplash.com/photo-1600185365926-3a2ce3cdb9eb?w=500&q=80",
   },
   {
     id: 7,
-    name: "Jordan 1 Retro High OG Flight Club",
-    category: "",
-    price: 107,
-    badge: "Popular",
-    img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT7sqOs1cs0mlSh6Vuuo2A2FWryqOR8bV0CqQ&s",
+    name: "Nike Air Force 1 '07 White",
+    brand: "Nike",
+    category: "nike",
+    price: 110,
+    badge: null,
+    img: "https://images.unsplash.com/photo-1587563871167-1ee9c731aefb?w=500&q=80",
   },
   {
     id: 8,
-    name: "Jordan 14 Retro Black University Blue",
-    category: "",
-    price: 137,
+    name: "Nike Blazer Mid '77 Vintage",
+    brand: "Nike",
+    category: "nike",
+    price: 105,
     badge: null,
-    img: "data:image/jpeg;base64,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",
+    img: "https://images.unsplash.com/photo-1606107557195-0e29a4b5b4aa?w=500&q=80",
+  },
+
+  // ADIDAS
+  {
+    id: 9,
+    name: "Adidas Yeezy Boost 350 V2 'Zebra'",
+    brand: "Adidas",
+    category: "adidas",
+    price: 345,
+    badge: "Hot",
+    img: "https://images.unsplash.com/photo-1551107696-a4b0c5a0d9a2?w=500&q=80",
+  },
+  {
+    id: 10,
+    name: "Adidas Stan Smith 'Cloud White'",
+    brand: "Adidas",
+    category: "adidas",
+    price: 90,
+    badge: null,
+    img: "https://images.unsplash.com/photo-1560769629-975ec94e6a86?w=500&q=80",
+  },
+  {
+    id: 11,
+    name: "Adidas Ultraboost 22",
+    brand: "Adidas",
+    category: "adidas",
+    price: 180,
+    badge: "New",
+    img: "https://images.unsplash.com/photo-1539185441755-769473a23570?w=500&q=80",
+  },
+  {
+    id: 12,
+    name: "Adidas Samba OG 'Black White'",
+    brand: "Adidas",
+    category: "adidas",
+    price: 100,
+    badge: "Trending",
+    img: "https://images.unsplash.com/photo-1556906781-9a412961a28c?w=500&q=80",
+  },
+
+  // PUMA
+  {
+    id: 13,
+    name: "Puma Suede Classic XXI",
+    brand: "Puma",
+    category: "puma",
+    price: 75,
+    badge: null,
+    img: "https://images.unsplash.com/photo-1608231387042-66d1773070a5?w=500&q=80",
+  },
+  {
+    id: 14,
+    name: "Puma RS-X 'Bold' Sneaker",
+    brand: "Puma",
+    category: "puma",
+    price: 110,
+    badge: "New",
+    img: "https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=500&q=80",
+  },
+  {
+    id: 15,
+    name: "Puma Clyde 'Hardwood'",
+    brand: "Puma",
+    category: "puma",
+    price: 85,
+    badge: null,
+    img: "https://images.unsplash.com/photo-1600185365483-26d7a4cc7519?w=500&q=80",
+  },
+
+  // NEW BALANCE
+  {
+    id: 16,
+    name: "New Balance 550 'White Green'",
+    brand: "New Balance",
+    category: "newbalance",
+    price: 110,
+    badge: "Trending",
+    img: "https://images.unsplash.com/photo-1606107557195-0e29a4b5b4aa?w=500&q=80",
+  },
+  {
+    id: 17,
+    name: "New Balance 990v5 'Grey'",
+    brand: "New Balance",
+    category: "newbalance",
+    price: 185,
+    badge: null,
+    img: "https://images.unsplash.com/photo-1605348532760-6753d2c43329?w=500&q=80",
+  },
+  {
+    id: 18,
+    name: "New Balance 2002R 'Sea Salt'",
+    brand: "New Balance",
+    category: "newbalance",
+    price: 130,
+    badge: "New",
+    img: "https://images.unsplash.com/photo-1587563871167-1ee9c731aefb?w=500&q=80",
+  },
+
+  // CONVERSE
+  {
+    id: 19,
+    name: "Converse Chuck 70 High 'Black'",
+    brand: "Converse",
+    category: "converse",
+    price: 85,
+    badge: null,
+    img: "https://images.unsplash.com/photo-1494496195158-c3bc4675567f?w=500&q=80",
+  },
+  {
+    id: 20,
+    name: "Converse Run Star Hike Hi 'White'",
+    brand: "Converse",
+    category: "converse",
+    price: 100,
+    badge: "Popular",
+    img: "https://images.unsplash.com/photo-1600185365926-3a2ce3cdb9eb?w=500&q=80",
+  },
+
+  // VANS
+  {
+    id: 21,
+    name: "Vans Old Skool 'Black White'",
+    brand: "Vans",
+    category: "vans",
+    price: 70,
+    badge: null,
+    img: "https://images.unsplash.com/photo-1525966222134-fcfa99b8ae77?w=500&q=80",
+  },
+  {
+    id: 22,
+    name: "Vans Sk8-Hi 'Marshmallow'",
+    brand: "Vans",
+    category: "vans",
+    price: 80,
+    badge: "New",
+    img: "https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=500&q=80",
+  },
+
+  // CROCS
+  {
+    id: 23,
+    name: "Crocs Classic Clog 'Black'",
+    brand: "Crocs",
+    category: "crocs",
+    price: 55,
+    badge: null,
+    img: "https://images.unsplash.com/photo-1560769629-975ec94e6a86?w=500&q=80",
+  },
+  {
+    id: 24,
+    name: "Crocs Classic Platform Clog",
+    brand: "Crocs",
+    category: "crocs",
+    price: 65,
+    badge: "Trending",
+    img: "https://images.unsplash.com/photo-1608231387042-66d1773070a5?w=500&q=80",
+  },
+  {
+    id: 25,
+    name: "Crocs x Hidden Valley Ranch Clog",
+    brand: "Crocs",
+    category: "crocs",
+    price: 90,
+    badge: "Collab",
+    img: "https://images.unsplash.com/photo-1551107696-a4b0c5a0d9a2?w=500&q=80",
+  },
+
+  // BIRKENSTOCK
+  {
+    id: 26,
+    name: "Birkenstock Arizona 'Sandal'",
+    brand: "Birkenstock",
+    category: "birkenstock",
+    price: 100,
+    badge: null,
+    img: "https://images.unsplash.com/photo-1539185441755-769473a23570?w=500&q=80",
+  },
+  {
+    id: 27,
+    name: "Birkenstock Boston Clog 'Mocha'",
+    brand: "Birkenstock",
+    category: "birkenstock",
+    price: 130,
+    badge: "Popular",
+    img: "https://images.unsplash.com/photo-1494496195158-c3bc4675567f?w=500&q=80",
+  },
+  {
+    id: 28,
+    name: "Birkenstock Mayari 'Graceful Licorice'",
+    brand: "Birkenstock",
+    category: "birkenstock",
+    price: 115,
+    badge: null,
+    img: "https://images.unsplash.com/photo-1525966222134-fcfa99b8ae77?w=500&q=80",
+  },
+
+  // ASICS
+  {
+    id: 29,
+    name: "ASICS Gel-Kayano 14 'Cream'",
+    brand: "ASICS",
+    category: "asics",
+    price: 120,
+    badge: "Trending",
+    img: "https://images.unsplash.com/photo-1606107557195-0e29a4b5b4aa?w=500&q=80",
+  },
+  {
+    id: 30,
+    name: "ASICS Gel-1130 'White Sage'",
+    brand: "ASICS",
+    category: "asics",
+    price: 110,
+    badge: "New",
+    img: "https://images.unsplash.com/photo-1605348532760-6753d2c43329?w=500&q=80",
+  },
+
+  // REEBOK
+  {
+    id: 31,
+    name: "Reebok Classic Leather 'White'",
+    brand: "Reebok",
+    category: "reebok",
+    price: 80,
+    badge: null,
+    img: "https://images.unsplash.com/photo-1587563871167-1ee9c731aefb?w=500&q=80",
+  },
+  {
+    id: 32,
+    name: "Reebok Club C 85 'White/Green'",
+    brand: "Reebok",
+    category: "reebok",
+    price: 75,
+    badge: null,
+    img: "https://images.unsplash.com/photo-1560769629-975ec94e6a86?w=500&q=80",
+  },
+
+  // TIMBERLAND
+  {
+    id: 33,
+    name: "Timberland 6\" Premium Boot 'Wheat'",
+    brand: "Timberland",
+    category: "timberland",
+    price: 198,
+    badge: "Iconic",
+    img: "https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=500&q=80",
+  },
+  {
+    id: 34,
+    name: "Timberland 3-Eye Lug Boat Shoe",
+    brand: "Timberland",
+    category: "timberland",
+    price: 160,
+    badge: null,
+    img: "https://images.unsplash.com/photo-1556906781-9a412961a28c?w=500&q=80",
+  },
+
+  // SALEHE BEMBURY / LUXURY COLLAB
+  {
+    id: 35,
+    name: "New Balance 5740 x Salehe Bembury",
+    brand: "New Balance",
+    category: "newbalance",
+    price: 299,
+    badge: "Collab",
+    img: "https://images.unsplash.com/photo-1600185365483-26d7a4cc7519?w=500&q=80",
+  },
+  {
+    id: 36,
+    name: "Adidas Gazelle 'Bold Pink'",
+    brand: "Adidas",
+    category: "adidas",
+    price: 95,
+    badge: "New",
+    img: "https://images.unsplash.com/photo-1608231387042-66d1773070a5?w=500&q=80",
   },
 ];
 
@@ -169,22 +454,31 @@ function renderProducts(filter = "all") {
 
   grid.innerHTML = "";
 
+  if (visible.length === 0) {
+    grid.innerHTML = `<div style="grid-column:1/-1;text-align:center;padding:4rem 2rem;color:var(--text-muted);font-size:0.9rem;text-transform:uppercase;letter-spacing:0.1em;">No products found</div>`;
+    return;
+  }
+
   visible.forEach((p, i) => {
     const card = document.createElement("div");
     card.className = "product-card";
-    card.style.animationDelay = `${i * 0.07}s`;
+    card.style.animationDelay = `${i * 0.05}s`;
     card.innerHTML = `
       <div class="product-img-wrap">
         <img class="product-img" src="${p.img}" alt="${p.name}" loading="lazy"/>
         ${p.badge ? `<span class="product-badge">${p.badge}</span>` : ""}
       </div>
       <div class="product-info">
-        <p class="product-category">${p.category}</p>
+        <p class="product-category">${p.brand}</p>
         <h3 class="product-name">${p.name}</h3>
         <div class="product-footer">
-          <span class="product-price">$${p.price.toFixed(2)}</span>
+          <div class="product-price-wrap">
+            <span class="product-price-label">Lowest Ask</span>
+            <span class="product-price">$${p.price.toFixed(2)}</span>
+          </div>
           <button class="btn-add" data-id="${p.id}">Add to Cart</button>
         </div>
+        <div class="xpress-tag">Xpress Ship</div>
       </div>
     `;
     grid.appendChild(card);
@@ -203,7 +497,19 @@ function renderProducts(filter = "all") {
 // FILTER BUTTONS (index.html)
 // =============================================
 document.addEventListener("DOMContentLoaded", () => {
-  const filterBtns = document.querySelectorAll(".filter-btn");
+  const strip = document.getElementById("brandFilterStrip");
+  if (strip) {
+    strip.addEventListener("click", (e) => {
+      const btn = e.target.closest(".filter-btn");
+      if (!btn) return;
+      strip.querySelectorAll(".filter-btn").forEach(b => b.classList.remove("active"));
+      btn.classList.add("active");
+      renderProducts(btn.dataset.filter);
+    });
+  }
+
+  // fallback for any standalone filter-btn outside strip
+  const filterBtns = document.querySelectorAll(".filter-bar .filter-btn");
   filterBtns.forEach((btn) => {
     btn.addEventListener("click", () => {
       filterBtns.forEach((b) => b.classList.remove("active"));
