@@ -320,7 +320,7 @@ const PRODUCTS = [
   // TIMBERLAND
   {
     id: 33,
-    name: "Timberland 6\" Premium Boot 'Wheat'",
+    name: 'Timberland 6" Premium Boot \'Wheat\'',
     brand: "Timberland",
     category: "timberland",
     price: 198,
@@ -337,7 +337,7 @@ const PRODUCTS = [
     img: "https://images.unsplash.com/photo-1556906781-9a412961a28c?w=500&q=80",
   },
 
-  // SALEHE BEMBURY / LUXURY COLLAB
+  // COLLABS
   {
     id: 35,
     name: "New Balance 5740 x Salehe Bembury",
@@ -357,6 +357,14 @@ const PRODUCTS = [
     img: "https://images.unsplash.com/photo-1608231387042-66d1773070a5?w=500&q=80",
   },
 ];
+
+// =============================================
+// DARK MODE — apply theme BEFORE paint to avoid flash
+// =============================================
+(function applyThemeEarly() {
+  const saved = localStorage.getItem("theme") || "light";
+  document.documentElement.setAttribute("data-theme", saved);
+})();
 
 // =============================================
 // CART HELPERS (LocalStorage)
@@ -419,9 +427,8 @@ function updateCartCount() {
   const el = document.getElementById("cartCount");
   if (el) {
     el.textContent = getTotalCount();
-    // Re-trigger pop animation
     el.style.animation = "none";
-    el.offsetWidth; // reflow
+    el.offsetWidth;
     el.style.animation = "";
   }
 }
@@ -443,14 +450,30 @@ function showNotification(msg) {
 
 // =============================================
 // RENDER PRODUCTS (index.html)
+// Accepts optional search query on top of brand filter
 // =============================================
-function renderProducts(filter = "all") {
+let currentFilter = "all";
+let currentSearch = "";
+
+function renderProducts(filter, search) {
+  if (filter !== undefined) currentFilter = filter;
+  if (search !== undefined) currentSearch = search;
+
   const grid = document.getElementById("productsGrid");
   if (!grid) return;
 
-  const visible = filter === "all"
+  let visible = currentFilter === "all"
     ? PRODUCTS
-    : PRODUCTS.filter((p) => p.category === filter);
+    : PRODUCTS.filter((p) => p.category === currentFilter);
+
+  if (currentSearch.trim()) {
+    const q = currentSearch.trim().toLowerCase();
+    visible = visible.filter(
+      (p) =>
+        p.name.toLowerCase().includes(q) ||
+        p.brand.toLowerCase().includes(q)
+    );
+  }
 
   grid.innerHTML = "";
 
@@ -484,19 +507,21 @@ function renderProducts(filter = "all") {
     grid.appendChild(card);
   });
 
-  // Delegate click
+  // Delegate click — remove old listener by replacing node clone trick isn't needed,
+  // we re-render fully each time so just attach once per render.
   grid.addEventListener("click", (e) => {
     const btn = e.target.closest(".btn-add");
     if (btn) {
       addToCart(Number(btn.dataset.id));
     }
-  });
+  }, { once: true });
 }
 
 // =============================================
-// FILTER BUTTONS (index.html)
+// FILTER BUTTONS + SEARCH BAR (index.html)
 // =============================================
 document.addEventListener("DOMContentLoaded", () => {
+  // --- Brand filter strip ---
   const strip = document.getElementById("brandFilterStrip");
   if (strip) {
     strip.addEventListener("click", (e) => {
@@ -508,15 +533,35 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // fallback for any standalone filter-btn outside strip
-  const filterBtns = document.querySelectorAll(".filter-bar .filter-btn");
-  filterBtns.forEach((btn) => {
-    btn.addEventListener("click", () => {
-      filterBtns.forEach((b) => b.classList.remove("active"));
-      btn.classList.add("active");
-      renderProducts(btn.dataset.filter);
+  // --- Search bar ---
+  const searchInput = document.getElementById("navSearch");
+  if (searchInput) {
+    searchInput.addEventListener("input", (e) => {
+      renderProducts(undefined, e.target.value);
     });
-  });
+    // Clear on Escape
+    searchInput.addEventListener("keydown", (e) => {
+      if (e.key === "Escape") {
+        searchInput.value = "";
+        renderProducts(undefined, "");
+        searchInput.blur();
+      }
+    });
+  }
+
+  // --- Dark mode toggle ---
+  const darkBtn = document.getElementById("darkToggle");
+  if (darkBtn) {
+    const current = document.documentElement.getAttribute("data-theme");
+    darkBtn.textContent = current === "dark" ? "☀️" : "🌙";
+
+    darkBtn.addEventListener("click", () => {
+      const next = document.documentElement.getAttribute("data-theme") === "dark" ? "light" : "dark";
+      document.documentElement.setAttribute("data-theme", next);
+      localStorage.setItem("theme", next);
+      darkBtn.textContent = next === "dark" ? "☀️" : "🌙";
+    });
+  }
 });
 
 // =============================================
@@ -562,24 +607,20 @@ function renderCart() {
     container.appendChild(el);
   });
 
-  const total = getTotal();
-  updateSummary(total);
+  updateSummary(getTotal());
 
-  // Qty buttons
   container.querySelectorAll(".qty-btn").forEach((btn) => {
     btn.addEventListener("click", () => {
       updateQty(Number(btn.dataset.id), Number(btn.dataset.delta));
     });
   });
 
-  // Remove buttons
   container.querySelectorAll(".remove-btn").forEach((btn) => {
     btn.addEventListener("click", () => {
       removeFromCart(Number(btn.dataset.id));
     });
   });
 
-  // Clear cart
   const clearBtn = document.getElementById("clearCartBtn");
   if (clearBtn) {
     clearBtn.onclick = () => {
@@ -625,26 +666,3 @@ function renderCheckoutSummary() {
   const el = document.getElementById("checkoutTotal");
   if (el) el.textContent = `$${total.toFixed(2)}`;
 }
-
-// =============================================
-// DARK MODE TOGGLE
-// =============================================
-(function initDarkMode() {
-  const saved = localStorage.getItem("theme") || "light";
-  document.documentElement.setAttribute("data-theme", saved);
-
-  document.addEventListener("DOMContentLoaded", () => {
-    const btn = document.getElementById("darkToggle");
-    if (!btn) return;
-
-    btn.textContent = saved === "dark" ? "☀️" : "🌙";
-
-    btn.addEventListener("click", () => {
-      const current = document.documentElement.getAttribute("data-theme");
-      const next = current === "dark" ? "light" : "dark";
-      document.documentElement.setAttribute("data-theme", next);
-      localStorage.setItem("theme", next);
-      btn.textContent = next === "dark" ? "☀️" : "🌙";
-    });
-  });
-})();
