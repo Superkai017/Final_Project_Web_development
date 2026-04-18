@@ -15,7 +15,7 @@ const PRODUCTS = [
     category: "jordan",
     price: 320,
     badge: "Hot",
-    img: "https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=500&q=80",
+    img: "https://static.nike.com/a/images/f_auto/dpr_3.0,cs_srgb/w_363,c_limit/95e3c30f-aa7f-41a4-9959-8023fc707299/air-jordan-1-2022-lost-and-found-chicago-the-inspiration-behind-the-design.jpg",
   },
   {
     id: 2,
@@ -53,7 +53,7 @@ const PRODUCTS = [
     category: "nike",
     price: 259,
     badge: "New",
-    img: "https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=500&q=80",
+    img: "https://static.nike.com/a/images/t_web_pdp_936_v2/f_auto,u_9ddf04c7-2a9a-4d76-add1-d15af8f0263d,c_scale,fl_relative,w_1.0,h_1.0,fl_layer_apply/d68f96e7-3ed5-4e9b-92f3-24b882dcf7ff/NIKE+AIR+MAX+95+BIG+BUBBLE.png",
   },
   {
     id: 6,
@@ -62,7 +62,7 @@ const PRODUCTS = [
     category: "nike",
     price: 189,
     badge: "Popular",
-    img: "https://images.unsplash.com/photo-1600185365926-3a2ce3cdb9eb?w=500&q=80",
+    img: "https://i5.walmartimages.com/seo/Men-s-Nike-Dunk-Low-Retro-Panda-2021-DD1391-100_f8e22be0-170c-4444-802c-e97063d59db2.3aed8cfb1b78553f1055318a269740d9.jpeg",
   },
   {
     id: 7,
