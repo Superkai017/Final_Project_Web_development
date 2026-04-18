@@ -1,9 +1,16 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="light">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>SneakerVault</title>
+  <!-- Apply theme before paint to prevent flash -->
+  <script>
+    (function() {
+      var t = localStorage.getItem('theme') || 'light';
+      document.documentElement.setAttribute('data-theme', t);
+    })();
+  </script>
   <link rel="stylesheet" href="style.css" />
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
 </head>
@@ -18,6 +25,16 @@
       <a href="checkout.html">Checkout</a>
     </div>
     <div class="nav-actions">
+      <div class="nav-search-wrap">
+        <span class="nav-search-icon">🔍</span>
+        <input
+          type="search"
+          id="navSearch"
+          class="nav-search"
+          placeholder="Search sneakers…"
+          autocomplete="off"
+        />
+      </div>
       <button class="dark-toggle" id="darkToggle" title="Toggle dark mode">🌙</button>
       <a href="cart.html" class="cart-icon">
         🛒 <span class="cart-count" id="cartCount">0</span>
