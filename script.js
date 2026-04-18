@@ -62,7 +62,7 @@ const PRODUCTS = [
     category: "nike",
     price: 189,
     badge: "Popular",
-    img: "https://i5.walmartimages.com/seo/Men-s-Nike-Dunk-Low-Retro-Panda-2021-DD1391-100_f8e22be0-170c-4444-802c-e97063d59db2.3aed8cfb1b78553f1055318a269740d9.jpeg",
+    img: "https://images.unsplash.com/photo-1600185365926-3a2ce3cdb9eb?w=500&q=80",
   },
   {
     id: 7,
