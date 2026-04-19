@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>SneakerVault</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="product.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800;900&family=Barlow:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="navbar">
+    <div class="nav-logo">SneakerVault</div>
+
+    <!-- SEARCH — IDs are required for script.js to find these elements -->
+    <div class="nav-search-wrap">
+      <div class="nav-search">
+        <span class="search-icon">🔍</span>
+        <input
+          type="text"
+          id="searchInput"
+          class="search-input"
+          placeholder="Search brand, color, etc."
+          autocomplete="off"
+        />
+        <button id="searchClear" class="search-clear" title="Clear">✕</button>
+      </div>
+      <!-- Dropdown injected here by ensureSearchDOM() -->
+    </div>
+
+    <div class="nav-links">
+      <a href="index.html">Shop</a>
+      <a href="cart.html">Cart</a>
+      <a href="checkout.html">Checkout</a>
+    </div>
+    <div class="nav-actions">
+      <button class="dark-toggle" id="darkToggle" title="Toggle dark mode">🌙</button>
+      <a href="cart.html" class="cart-icon">
+        🛒 <span class="cart-count" id="cartCount">0</span>
+      </a>
+    </div>
+  </nav>
+
+  <!-- NOTIFICATION -->
+  <div class="notification" id="notification">
+    <span id="notifText">Added to cart!</span>
+  </div>
+
+  <!-- MAIN DETAIL -->
+  <main class="detail-page" id="detailPage">
+    <!-- populated by JS -->
+  </main>
+
+  <!-- RELATED PRODUCTS -->
+  <section class="related-section">
+    <h2 class="related-title">Related Products</h2>
+    <div class="related-grid" id="relatedGrid"></div>
+  </section>
+
+  <footer class="footer">
+    <span>© 2025 SneakerVault. Crafted with care.</span>
+  </footer>
+
+  <script src="script.js"></script>
+  <script>
+    updateCartCount();
+
+    // Get product id from URL
+    const params = new URLSearchParams(window.location.search);
+    const pid = Number(params.get("id"));
+    const product = PRODUCTS.find(p => p.id === pid);
+
+    if (!product) {
+      document.getElementById("detailPage").innerHTML = `
+        <div style="text-align:center;padding:6rem 2rem;color:var(--text-muted)">
+          <div style="font-size:3rem">👟</div>
+          <p style="margin-top:1rem;font-family:var(--font-display);font-size:1.5rem;text-transform:uppercase">Product not found</p>
+          <a href="index.html" style="color:var(--accent);margin-top:1rem;display:inline-block;font-weight:600">← Back to Shop</a>
+        </div>`;
+    } else {
+      document.title = `SneakerVault — ${product.name}`;
+      renderDetailPage(product);
+      renderRelated(product);
+    }
+
+    function renderDetailPage(p) {
+      const soldCount  = Math.floor(Math.random() * 2000) + 300;
+      const lastSale   = (p.price - Math.floor(Math.random() * 40 + 5)).toFixed(2);
+      const sellPrice  = (p.price - Math.floor(Math.random() * 10 + 2)).toFixed(2);
+      const sizes      = ["6","6.5","7","7.5","8","8.5","9","9.5","10","10.5","11","12","13"];
+      const breadcrumb = `Home / Shoes / ${p.brand}`;
+
+      document.getElementById("detailPage").innerHTML = `
+        <div class="detail-wrap">
+          <!-- LEFT: IMAGE -->
+          <div class="detail-left">
+            <div class="breadcrumb">${breadcrumb} / <span>${p.name}</span></div>
+            <div class="detail-img-wrap">
+              <div class="detail-actions-top">
+                <button class="icon-btn" title="Wishlist">♡</button>
+                <button class="icon-btn" title="Share">↗</button>
+              </div>
+              <img class="detail-img" src="${p.img}" alt="${p.name}" id="mainImg"/>
+            </div>
+            <div class="detail-thumbnails">
+              <img class="thumb active" src="${p.img}" alt="view 1" onclick="switchImg(this.src)"/>
+              <img class="thumb" src="${p.img}?v=2" alt="view 2" onclick="switchImg(this.src)"/>
+              <img class="thumb" src="${p.img}?v=3" alt="view 3" onclick="switchImg(this.src)"/>
+            </div>
+          </div>
+
+          <!-- RIGHT: INFO -->
+          <div class="detail-right">
+            <p class="detail-brand">${p.brand}</p>
+            <h1 class="detail-name">${p.name}</h1>
+            ${p.badge ? `<span class="detail-badge">${p.badge}</span>` : ""}
+
+            <div class="xpress-banner">
+              <span class="xpress-check">☐</span>
+              <span><strong>Xpress Ship available.</strong> Get it by Apr 23 – 29</span>
+              <span class="xpress-info">ⓘ</span>
+            </div>
+
+            <!-- SIZE SELECTOR -->
+            <div class="size-section">
+              <div class="size-label-row">
+                <span class="size-label">Size:</span>
+                <span class="size-guide">Size Guide ↗</span>
+              </div>
+              <div class="size-grid" id="sizeGrid">
+                ${sizes.map(s => `<button class="size-btn" data-size="${s}">${s}</button>`).join("")}
+              </div>
+            </div>
+
+            <!-- PRICE BOX -->
+            <div class="price-box">
+              <div class="price-left">
+                <span class="price-label">Buy Now for</span>
+                <span class="price-big">$${p.price}</span>
+              </div>
+              <div class="price-right">
+                <span class="sold-flash">⚡ ${soldCount.toLocaleString()} Sold in Last 3 Days!</span>
+              </div>
+            </div>
+
+            <!-- CTA BUTTONS -->
+            <div class="cta-row">
+              <button class="btn-offer" id="offerBtn">Make Offer</button>
+              <button class="btn-buynow" id="buyNowBtn" data-id="${p.id}">Buy Now</button>
+            </div>
+
+            <!-- LAST SALE -->
+            <div class="last-sale-row">
+              <span class="last-sale-text">Last Sale: <strong>$${lastSale}</strong></span>
+              <a href="#" class="market-link">View Market Data →</a>
+            </div>
+
+            <!-- SELL LINK -->
+            <div class="sell-link-row">
+              <a href="#">Sell Now for $${sellPrice} or Ask for More →</a>
+            </div>
+
+            <!-- TRUST BADGES -->
+            <div class="trust-badges">
+              <div class="trust-item" onclick="this.classList.toggle('open')">
+                <div class="trust-left"><span>🛡</span> Worry Free Purchasing</div>
+                <span class="trust-arrow">∨</span>
+                <div class="trust-body">Every item goes through our authentication process. We verify each product before it ships to you.</div>
+              </div>
+              <div class="trust-item" onclick="this.classList.toggle('open')">
+                <div class="trust-left"><span>✅</span> Buyer Promise</div>
+                <span class="trust-arrow">∨</span>
+                <div class="trust-body">If your item doesn't pass our verification, you'll receive a full refund — guaranteed.</div>
+              </div>
+              <div class="trust-item" onclick="this.classList.toggle('open')">
+                <div class="trust-left"><span>🔄</span> Our Process</div>
+                <span class="trust-arrow">∨</span>
+                <div class="trust-body">Condition: New — All products listed here are brand new and unworn, verified by our team.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      `;
+
+      document.querySelectorAll(".size-btn").forEach(btn => {
+        btn.addEventListener("click", () => {
+          document.querySelectorAll(".size-btn").forEach(b => b.classList.remove("selected"));
+          btn.classList.add("selected");
+        });
+      });
+
+      document.getElementById("buyNowBtn").addEventListener("click", () => {
+        addToCart(p.id);
+        setTimeout(() => window.location.href = "cart.html", 600);
+      });
+
+      document.getElementById("offerBtn").addEventListener("click", () => {
+        addToCart(p.id);
+      });
+    }
+
+    function renderRelated(current) {
+      const related = PRODUCTS
+        .filter(p => p.category === current.category && p.id !== current.id)
+        .slice(0, 6);
+
+      const grid = document.getElementById("relatedGrid");
+      if (!grid || related.length === 0) return;
+
+      related.forEach((p, i) => {
+        const card = document.createElement("div");
+        card.className = "product-card";
+        card.style.animationDelay = `${i * 0.06}s`;
+        card.style.cursor = "pointer";
+        card.innerHTML = `
+          <div class="product-img-wrap">
+            <img class="product-img" src="${p.img}" alt="${p.name}" loading="lazy"/>
+            ${p.badge ? `<span class="product-badge">${p.badge}</span>` : ""}
+          </div>
+          <div class="product-info">
+            <p class="product-category">${p.brand}</p>
+            <h3 class="product-name">${p.name}</h3>
+            <div class="product-footer">
+              <div class="product-price-wrap">
+                <span class="product-price-label">Lowest Ask</span>
+                <span class="product-price">$${p.price.toFixed(2)}</span>
+              </div>
+              <button class="btn-add" data-id="${p.id}">+ Cart</button>
+            </div>
+            <div class="xpress-tag">Xpress Ship</div>
+          </div>
+        `;
+        card.addEventListener("click", (e) => {
+          if (e.target.closest(".btn-add")) {
+            addToCart(Number(e.target.closest(".btn-add").dataset.id));
+            return;
+          }
+          window.location.href = `product.html?id=${p.id}`;
+        });
+        grid.appendChild(card);
+      });
+    }
+
+    function switchImg(src) {
+      document.getElementById("mainImg").src = src;
+      document.querySelectorAll(".thumb").forEach(t => t.classList.toggle("active", t.src === src));
+    }
+  </script>
+</body>
+</html>
