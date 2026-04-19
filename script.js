@@ -276,10 +276,28 @@ const PRODUCTS = [
     badge: null,
     img: "https://rustans.com/cdn/shop/files/3197269_GRACEFULLICORICEMAYARIBIRKO-FLOR2.jpg?v=1715932795&width=1400",
   },
+   {
+    id: 29,
+    name: "Arizona EVA in Color Black",
+    brand: "Birkenstock",
+    category: "birkenstock",
+    price: 50,
+    badge: null,
+    img: "https://www.birkenstock.com/on/demandware.static/-/Sites-master-catalog-emea/default/dwc37b1ea6/129421/129421.jpg",
+  },
+   {
+    id: 30,
+    name: "Arizona BF S Brown by Birkenstock at Walking On A Cloud",
+    brand: "Birkenstock",
+    category: "birkenstock",
+    price: 150,
+    badge: null,
+    img: "https://www.gliks.com/cdn/shop/files/birkenstock-women-mocha-arizona-2.jpg?v=1689195227",
+  },
 
   // ASICS
   {
-    id: 29,
+    id: 31,
     name: "ASICS Gel-Kayano 14 'Cream'",
     brand: "ASICS",
     category: "asics",
@@ -288,7 +306,7 @@ const PRODUCTS = [
     img: "https://cdn-images.farfetch-contents.com/22/61/07/02/22610702_52639631_1000.jpg",
   },
   {
-    id: 30,
+    id: 32,
     name: "ASICS Gel-1130 'White Sage'",
     brand: "ASICS",
     category: "asics",
@@ -299,7 +317,7 @@ const PRODUCTS = [
 
   // REEBOK
   {
-    id: 31,
+    id: 33,
     name: "Reebok Classic Leather 'White'",
     brand: "Reebok",
     category: "reebok",
@@ -308,7 +326,7 @@ const PRODUCTS = [
     img: "https://sweetandtender.com/cdn/shop/files/reebok-classic-leather-shoes_19729581_44794664_2048.webp?v=1737806217&width=1946",
   },
   {
-    id: 32,
+    id: 34,
     name: "Reebok Club C 85 'White/Green'",
     brand: "Reebok",
     category: "reebok",
@@ -319,7 +337,7 @@ const PRODUCTS = [
 
   // TIMBERLAND
   {
-    id: 33,
+    id: 35,
     name: "Timberland 6\" Premium Boot 'Wheat'",
     brand: "Timberland",
     category: "timberland",
@@ -328,7 +346,7 @@ const PRODUCTS = [
     img: "https://static.super-shop.com/1509562-timberland-premium-6-inch-winter-shoes-wheat-full-grain.jpg?t=fb",
   },
   {
-    id: 34,
+    id: 36,
     name: "Timberland 3-Eye Lug Boat Shoe",
     brand: "Timberland",
     category: "timberland",
@@ -339,7 +357,7 @@ const PRODUCTS = [
 
   // COLLABS
   {
-    id: 35,
+    id: 37,
     name: "New Balance 5740 x Salehe Bembury",
     brand: "New Balance",
     category: "newbalance",
@@ -348,7 +366,7 @@ const PRODUCTS = [
     img: "https://images.stockx.com/images/New-Balance-574-Salehe-Bembury-Yurt-Team-Forest-Green-Product.jpg?fit=fill&bg=FFFFFF&w=1200&h=857&q=60&dpr=1&trim=color&updated_at=1738193358",
   },
   {
-    id: 36,
+    id: 38,
     name: "Adidas Gazelle 'Bold Pink'",
     brand: "Adidas",
     category: "adidas",
