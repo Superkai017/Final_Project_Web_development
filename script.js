@@ -24,7 +24,7 @@ const PRODUCTS = [
     category: "jordan",
     price: 285,
     badge: null,
-    img: "https://images.stockx.com/images/Air-Jordan-4-Retro-Military-Blue-2024-GS-Product.jpg?fit=fill&bg=FFFFFF&w=700&h=500&fm=webp&auto=compress&q=90&dpr=2&trim=color&updated_at=1738193358",
+    img: "https://cdn.woovin.com/legacy/posts/air-jordan-4-military-blue-design-photo-1024x1024.webp",
   },
   {
     id: 3,
@@ -33,7 +33,7 @@ const PRODUCTS = [
     category: "jordan",
     price: 375,
     badge: "Bestseller",
-    img: "https://images.stockx.com/images/Air-Jordan-11-Retro-Bred-2024-GS-Product.jpg?fit=fill&bg=FFFFFF&w=700&h=500&fm=webp&auto=compress&q=90&dpr=2&trim=color&updated_at=1738193358",
+    img: "https://static.nike.com/a/images/w_1280,q_auto,f_auto/5e123fa8-8516-47a2-817f-de49f6c008b7/women-s-air-jordan-11-bred-velvet-db5457-061.jpg",
   },
   {
     id: 4,
@@ -42,7 +42,7 @@ const PRODUCTS = [
     category: "jordan",
     price: 260,
     badge: null,
-    img: "https://images.stockx.com/images/Air-Jordan-3-Retro-White-Cement-2024-GS-Product.jpg?fit=fill&bg=FFFFFF&w=700&h=500&fm=webp&auto=compress&q=90&dpr=2&trim=color&updated_at=1738193358",
+    img: "https://www.resellzonecesena.com/cdn/shop/files/air-jordan-3-retro-white-cement-reimagined-dn3707-100-resellzone-1.jpg?v=1714061235",
   },
 
   // NIKE
@@ -62,7 +62,7 @@ const PRODUCTS = [
     category: "nike",
     price: 189,
     badge: "Popular",
-    img: "https://images.unsplash.com/photo-1600185365926-3a2ce3cdb9eb?w=500&q=80",
+    img: "https://static.nike.com/a/images/t_web_pdp_936_v2/f_auto,u_9ddf04c7-2a9a-4d76-add1-d15af8f0263d,c_scale,fl_relative,w_1.0,h_1.0,fl_layer_apply/b1bcbca4-e853-4df7-b329-5be3c61ee057/NIKE+DUNK+LOW+RETRO.png",
   },
   {
     id: 7,
@@ -71,7 +71,7 @@ const PRODUCTS = [
     category: "nike",
     price: 110,
     badge: null,
-    img: "https://images.unsplash.com/photo-1587563871167-1ee9c731aefb?w=500&q=80",
+    img: "https://static.nike.com/a/images/t_web_pdp_936_v2/f_auto,u_9ddf04c7-2a9a-4d76-add1-d15af8f0263d,c_scale,fl_relative,w_1.0,h_1.0,fl_layer_apply/b7d9211c-26e7-431a-ac24-b0540fb3c00f/AIR+FORCE+1+%2707.png",
   },
   {
     id: 8,
@@ -80,7 +80,7 @@ const PRODUCTS = [
     category: "nike",
     price: 105,
     badge: null,
-    img: "https://images.unsplash.com/photo-1606107557195-0e29a4b5b4aa?w=500&q=80",
+    img: "https://static.ftshp.digital/img/p/1/0/6/3/3/3/3/1063333-full_product.jpg",
   },
 
   // ADIDAS
@@ -91,7 +91,7 @@ const PRODUCTS = [
     category: "adidas",
     price: 345,
     badge: "Hot",
-    img: "https://images.unsplash.com/photo-1551107696-a4b0c5a0d9a2?w=500&q=80",
+    img: "https://images-na.ssl-images-amazon.com/images/I/51hD2cbsPGL._AC_UL600_SR600,600_.jpg",
   },
   {
     id: 10,
@@ -100,7 +100,7 @@ const PRODUCTS = [
     category: "adidas",
     price: 90,
     badge: null,
-    img: "https://images.unsplash.com/photo-1560769629-975ec94e6a86?w=500&q=80",
+    img: "https://assets.adidas.com/images/w_600,f_auto,q_auto/deecebcc265c43c6b092a7fa00fed2d0_9366/Stan_Smith_Shoes_White_S75104_01_standard.jpg",
   },
   {
     id: 11,
@@ -109,7 +109,7 @@ const PRODUCTS = [
     category: "adidas",
     price: 180,
     badge: "New",
-    img: "https://images.unsplash.com/photo-1539185441755-769473a23570?w=500&q=80",
+    img: "https://assets.adidas.com/images/w_600,f_auto,q_auto/123717a32016417f9044ada9001b57e2_9366/ULTRABOOST_22_SHOES_Black_GX5591_01_standard.jpg",
   },
   {
     id: 12,
@@ -118,7 +118,7 @@ const PRODUCTS = [
     category: "adidas",
     price: 100,
     badge: "Trending",
-    img: "https://images.unsplash.com/photo-1556906781-9a412961a28c?w=500&q=80",
+    img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRNHXVTf-nFSCM9ZpMUPw3oKFVQ4L6j728anw&s",
   },
 
   // PUMA
@@ -129,7 +129,7 @@ const PRODUCTS = [
     category: "puma",
     price: 75,
     badge: null,
-    img: "https://images.unsplash.com/photo-1608231387042-66d1773070a5?w=500&q=80",
+    img: "https://images.puma.com/image/upload/f_auto,q_auto,b_rgb:fafafa,w_2000,h_2000/global/374915/01/sv01/fnd/THA/fmt/png/Suede-Classic-XXI-Trainers",
   },
   {
     id: 14,
@@ -138,7 +138,7 @@ const PRODUCTS = [
     category: "puma",
     price: 110,
     badge: "New",
-    img: "https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=500&q=80",
+    img: "https://i5.walmartimages.com/asr/0f25c1dc-2742-472a-9f2e-ff557341a59c.be5b62fc4318f4f532b34fa3a0deabae.jpeg",
   },
   {
     id: 15,
@@ -147,7 +147,7 @@ const PRODUCTS = [
     category: "puma",
     price: 85,
     badge: null,
-    img: "https://images.unsplash.com/photo-1600185365483-26d7a4cc7519?w=500&q=80",
+    img: "https://images.puma.com/image/upload/f_auto,q_auto,b_rgb:fafafa,w_2000,h_2000/global/193663/01/sv01/fnd/PHL/fmt/png/Clyde-Hardwood-Basketball-Shoes",
   },
 
   // NEW BALANCE
@@ -158,7 +158,7 @@ const PRODUCTS = [
     category: "newbalance",
     price: 110,
     badge: "Trending",
-    img: "https://images.unsplash.com/photo-1606107557195-0e29a4b5b4aa?w=500&q=80",
+    img: "https://malbon.com/cdn/shop/files/MG-550WG-WHITE-GREEN_1_e9c48d74-ef15-43dc-b927-69d70fef6dbc.jpg?v=1762201540",
   },
   {
     id: 17,
@@ -167,7 +167,7 @@ const PRODUCTS = [
     category: "newbalance",
     price: 185,
     badge: null,
-    img: "https://images.unsplash.com/photo-1605348532760-6753d2c43329?w=500&q=80",
+    img: "https://d2cva83hdk3bwc.cloudfront.net/new-balance-990v5-made-in-usa-grey---d-standard-1.jpg",
   },
   {
     id: 18,
@@ -176,7 +176,7 @@ const PRODUCTS = [
     category: "newbalance",
     price: 130,
     badge: "New",
-    img: "https://images.unsplash.com/photo-1587563871167-1ee9c731aefb?w=500&q=80",
+    img: "https://ca.kith.com/cdn/shop/files/NBM2002RPDNewBalance2002RSeaSaltTeamAwayGreyStoneware_7502.jpg?v=1735570804&width=1920",
   },
 
   // CONVERSE
@@ -187,7 +187,7 @@ const PRODUCTS = [
     category: "converse",
     price: 85,
     badge: null,
-    img: "https://images.unsplash.com/photo-1494496195158-c3bc4675567f?w=500&q=80",
+    img: "https://converse.ca/cdn/shop/files/162050C_162050C_A_107X1_694044a4-56b0-4d45-b19b-c92b45fb2fc1.jpg?v=1754070916&width=2048",
   },
   {
     id: 20,
@@ -196,7 +196,7 @@ const PRODUCTS = [
     category: "converse",
     price: 100,
     badge: "Popular",
-    img: "https://images.unsplash.com/photo-1600185365926-3a2ce3cdb9eb?w=500&q=80",
+    img: "https://converse.ca/cdn/shop/files/166799C_166799C_A_107X1_12fa22d7-7186-4dcc-9b7a-ab9108c67432.jpg?v=1754070956&width=2048",
   },
 
   // VANS
@@ -207,7 +207,7 @@ const PRODUCTS = [
     category: "vans",
     price: 70,
     badge: null,
-    img: "https://images.unsplash.com/photo-1525966222134-fcfa99b8ae77?w=500&q=80",
+    img: "https://static.super-shop.com/1410937-vans-old-skool-shoes-black-white.jpg?t=fb",
   },
   {
     id: 22,
@@ -216,7 +216,7 @@ const PRODUCTS = [
     category: "vans",
     price: 80,
     badge: "New",
-    img: "https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=500&q=80",
+    img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRr9C7OPoDaAEoYS93V5W2Y2WlBLI-IbUCw5w&s",
   },
 
   // CROCS
@@ -227,7 +227,7 @@ const PRODUCTS = [
     category: "crocs",
     price: 55,
     badge: null,
-    img: "https://images.unsplash.com/photo-1560769629-975ec94e6a86?w=500&q=80",
+    img: "https://www.fjellsport.no/assets/blobs/crocs-classic-clog-black-d748203d01.jpeg?preset=medium&dpr=2",
   },
   {
     id: 24,
@@ -236,7 +236,7 @@ const PRODUCTS = [
     category: "crocs",
     price: 65,
     badge: "Trending",
-    img: "https://images.unsplash.com/photo-1608231387042-66d1773070a5?w=500&q=80",
+    img: "https://crocs.com.ph/cdn/shop/files/206750-453_1.png?v=1764276146&width=2000",
   },
   {
     id: 25,
@@ -245,7 +245,7 @@ const PRODUCTS = [
     category: "crocs",
     price: 90,
     badge: "Collab",
-    img: "https://images.unsplash.com/photo-1551107696-a4b0c5a0d9a2?w=500&q=80",
+    img: "https://people.com/thmb/pXOlO4PTIM4ZDs4iCJsjFcaVO1M=/4000x0/filters:no_upscale():max_bytes(150000):strip_icc():focal(999x0:1001x2)/ranch-crocs-2-19552760e2cd4699ac18e9bfb8a8b2e3.jpg",
   },
 
   // BIRKENSTOCK
@@ -256,7 +256,7 @@ const PRODUCTS = [
     category: "birkenstock",
     price: 100,
     badge: null,
-    img: "https://images.unsplash.com/photo-1539185441755-769473a23570?w=500&q=80",
+    img: "https://footprintusa.co/cdn/shop/products/951321.jpg?v=1690183282",
   },
   {
     id: 27,
@@ -265,7 +265,7 @@ const PRODUCTS = [
     category: "birkenstock",
     price: 130,
     badge: "Popular",
-    img: "https://images.unsplash.com/photo-1494496195158-c3bc4675567f?w=500&q=80",
+    img: "https://plazashoestore.com/cdn/shop/files/66046-5.jpg?v=1756921781&width=1200",
   },
   {
     id: 28,
@@ -274,7 +274,7 @@ const PRODUCTS = [
     category: "birkenstock",
     price: 115,
     badge: null,
-    img: "https://images.unsplash.com/photo-1525966222134-fcfa99b8ae77?w=500&q=80",
+    img: "https://rustans.com/cdn/shop/files/3197269_GRACEFULLICORICEMAYARIBIRKO-FLOR2.jpg?v=1715932795&width=1400",
   },
 
   // ASICS
@@ -285,7 +285,7 @@ const PRODUCTS = [
     category: "asics",
     price: 120,
     badge: "Trending",
-    img: "https://images.unsplash.com/photo-1606107557195-0e29a4b5b4aa?w=500&q=80",
+    img: "https://cdn-images.farfetch-contents.com/22/61/07/02/22610702_52639631_1000.jpg",
   },
   {
     id: 30,
@@ -294,7 +294,7 @@ const PRODUCTS = [
     category: "asics",
     price: 110,
     badge: "New",
-    img: "https://images.unsplash.com/photo-1605348532760-6753d2c43329?w=500&q=80",
+    img: "https://i.ebayimg.com/images/g/zj4AAeSwbzRpw~X4/s-l1200.jpg",
   },
 
   // REEBOK
@@ -305,7 +305,7 @@ const PRODUCTS = [
     category: "reebok",
     price: 80,
     badge: null,
-    img: "https://images.unsplash.com/photo-1587563871167-1ee9c731aefb?w=500&q=80",
+    img: "https://sweetandtender.com/cdn/shop/files/reebok-classic-leather-shoes_19729581_44794664_2048.webp?v=1737806217&width=1946",
   },
   {
     id: 32,
@@ -314,7 +314,7 @@ const PRODUCTS = [
     category: "reebok",
     price: 75,
     badge: null,
-    img: "https://images.unsplash.com/photo-1560769629-975ec94e6a86?w=500&q=80",
+    img: "https://eu.kith.com/cdn/shop/files/RKID9221.jpg?v=1706181188&width=1920",
   },
 
   // TIMBERLAND
@@ -325,7 +325,7 @@ const PRODUCTS = [
     category: "timberland",
     price: 198,
     badge: "Iconic",
-    img: "https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=500&q=80",
+    img: "https://static.super-shop.com/1509562-timberland-premium-6-inch-winter-shoes-wheat-full-grain.jpg?t=fb",
   },
   {
     id: 34,
@@ -334,7 +334,7 @@ const PRODUCTS = [
     category: "timberland",
     price: 160,
     badge: null,
-    img: "https://images.unsplash.com/photo-1556906781-9a412961a28c?w=500&q=80",
+    img: "https://www.timberland.com.sg/wp-content/uploads/product/f23/30003214-ALT9.jpg",
   },
 
   // COLLABS
@@ -345,7 +345,7 @@ const PRODUCTS = [
     category: "newbalance",
     price: 299,
     badge: "Collab",
-    img: "https://images.unsplash.com/photo-1600185365483-26d7a4cc7519?w=500&q=80",
+    img: "https://images.stockx.com/images/New-Balance-574-Salehe-Bembury-Yurt-Team-Forest-Green-Product.jpg?fit=fill&bg=FFFFFF&w=1200&h=857&q=60&dpr=1&trim=color&updated_at=1738193358",
   },
   {
     id: 36,
@@ -354,7 +354,7 @@ const PRODUCTS = [
     category: "adidas",
     price: 95,
     badge: "New",
-    img: "https://images.unsplash.com/photo-1608231387042-66d1773070a5?w=500&q=80",
+    img: "https://assets.adidas.com/images/w_1880,f_auto,q_auto/92ffc42c863b4d3b85a04a517d00e765_9366/IE0420_01_standard.jpg",
   },
 ];
 
