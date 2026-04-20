@@ -1136,3 +1136,44 @@ function renderCheckoutSummary() {
   const el = document.getElementById("checkoutTotal");
   if (el) el.textContent = `$${getTotal().toFixed(2)}`;
 }
+
+// HERO SECTION IMAGE SLIDER
+
+  const track = document.getElementById('slidesTrack');
+  const slider = document.getElementById('heroSlider');
+  const dotsContainer = document.getElementById('sliderDots');
+  const slides = track.querySelectorAll('.slide');
+  const total = slides.length;
+  let current = 0, autoTimer, startX = 0, isDragging = false, dragDelta = 0;
+
+  const dots = [];
+  slides.forEach((_, i) => {
+    const d = document.createElement('button');
+    d.className = 'dot' + (i === 0 ? ' active' : '');
+    d.addEventListener('click', () => goTo(i));
+    dotsContainer.appendChild(d);
+    dots.push(d);
+  });
+
+  function goTo(idx) {
+    current = (idx + total) % total;
+    track.style.transform = `translateX(-${current * 100}%)`;
+    dots.forEach((d, i) => d.classList.toggle('active', i === current));
+  }
+
+  function next() { goTo(current + 1); }
+  function prev() { goTo(current - 1); }
+  function resetAuto() { clearInterval(autoTimer); autoTimer = setInterval(next, 3200); }
+
+  document.getElementById('nextBtn').addEventListener('click', () => { next(); resetAuto(); });
+  document.getElementById('prevBtn').addEventListener('click', () => { prev(); resetAuto(); });
+
+  slider.addEventListener('mousedown', e => { isDragging = true; startX = e.clientX; dragDelta = 0; track.classList.add('dragging'); });
+  document.addEventListener('mousemove', e => { if (!isDragging) return; dragDelta = e.clientX - startX; track.style.transform = `translateX(${-current * slider.offsetWidth + dragDelta}px)`; });
+  document.addEventListener('mouseup', () => { if (!isDragging) return; isDragging = false; track.classList.remove('dragging'); if (dragDelta < -60) next(); else if (dragDelta > 60) prev(); else goTo(current); resetAuto(); });
+
+  let touchStart = 0;
+  slider.addEventListener('touchstart', e => { touchStart = e.touches[0].clientX; });
+  slider.addEventListener('touchend', e => { const d = e.changedTouches[0].clientX - touchStart; if (d < -50) next(); else if (d > 50) prev(); resetAuto(); });
+
+  resetAuto();

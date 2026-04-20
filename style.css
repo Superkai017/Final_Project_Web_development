@@ -223,75 +223,37 @@ a { text-decoration: none; color: inherit; }
 /* === HERO === */
 .hero {
   position: relative;
-  background: var(--accent);
+  background: #c8f000;
   overflow: hidden;
   min-height: 340px;
   display: flex;
   align-items: center;
   padding: 3rem 4vw;
 }
-
-.hero-text {
-  position: relative;
-  z-index: 2;
-  max-width: 480px;
-}
-
-.hero-sub {
-  font-family: var(--font-display);
-  font-size: 0.75rem;
-  font-weight: 700;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: #000;
-  opacity: 0.6;
-  margin-bottom: 0.6rem;
-  animation: fadeUp 0.5s ease both;
-}
-
-.hero h1 {
-  font-family: var(--font-display);
-  font-size: clamp(2.8rem, 7vw, 5.5rem);
-  line-height: 0.95;
-  font-weight: 900;
-  color: #000;
-  text-transform: uppercase;
-  letter-spacing: -0.01em;
-  animation: fadeUp 0.6s 0.05s ease both;
-}
-
-.hero h1 em {
-  font-style: normal;
-  display: block;
-  font-size: 0.7em;
-  font-weight: 400;
-  letter-spacing: 0.01em;
-  margin-top: 0.3rem;
-}
-
-.hero-desc {
-  margin-top: 1.5rem;
-  font-size: 0.88rem;
-  font-weight: 600;
-  color: #000;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  text-decoration: underline;
-  text-underline-offset: 4px;
-  animation: fadeUp 0.6s 0.1s ease both;
-  cursor: pointer;
-}
-
-.hero-blob {
-  position: absolute;
-  right: -2%;
-  top: 0;
-  width: 52%;
-  height: 100%;
-  background: rgba(0,0,0,0.06);
-  clip-path: polygon(15% 0%, 100% 0%, 100% 100%, 0% 100%);
-  pointer-events: none;
-}
+.hero-text { position: relative; z-index: 2; max-width: 480px; flex-shrink: 0; }
+.hero-sub { font-size: 0.75rem; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: #000; opacity: 0.6; margin-bottom: 0.6rem; }
+.hero h1 { font-size: clamp(2.8rem, 7vw, 5.5rem); line-height: 0.95; font-weight: 900; color: #000; text-transform: uppercase; }
+.hero h1 em { font-style: normal; display: block; font-size: 0.7em; font-weight: 400; margin-top: 0.3rem; }
+.hero-desc { margin-top: 1.5rem; font-size: 0.88rem; font-weight: 600; color: #000; text-transform: uppercase; text-decoration: underline; cursor: pointer; }
+.hero-blob { position: absolute; right: -2%; top: 0; width: 52%; height: 100%; background: rgba(0,0,0,0.06); clip-path: polygon(15% 0%,100% 0%,100% 100%,0% 100%); pointer-events: none; }
+.hero-slider { position: absolute; right: 0; top: 0; width: 52%; height: 100%; z-index: 3; overflow: hidden; cursor: grab; user-select: none; }
+.hero-slider:active { cursor: grabbing; }
+.slides-track { display: flex; height: 100%; transition: transform 0.5s cubic-bezier(0.25,0.46,0.45,0.94); }
+.slides-track.dragging { transition: none; }
+.slide { min-width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; padding: 1.5rem; position: relative; }
+.slide img { max-height: 85%; max-width: 90%; object-fit: contain; filter: drop-shadow(0 12px 32px rgba(0,0,0,0.22)); transform: rotate(-6deg) translateY(4px); pointer-events: none; }
+.slide:nth-child(2) img { transform: rotate(4deg) translateY(-2px); }
+.slide:nth-child(3) img { transform: rotate(-3deg) translateY(6px); }
+.slide:nth-child(4) img { transform: rotate(5deg) translateY(0px); }
+.slide-label { position: absolute; bottom: 1rem; left: 50%; transform: translateX(-50%); background: rgba(0,0,0,0.75); color: #c8f000; font-size: 0.65rem; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; padding: 0.3rem 0.8rem; white-space: nowrap; opacity: 0; transition: opacity 0.3s; }
+.hero-slider:hover .slide-label { opacity: 1; }
+.slider-dots { position: absolute; bottom: 1rem; right: 1.5rem; z-index: 10; display: flex; gap: 6px; align-items: center; }
+.dot { width: 6px; height: 6px; border-radius: 50%; background: rgba(0,0,0,0.25); cursor: pointer; transition: all 0.3s; border: none; padding: 0; }
+.dot.active { background: #000; width: 18px; border-radius: 3px; }
+.slider-arrow { position: absolute; top: 50%; transform: translateY(-50%); z-index: 10; background: rgba(0,0,0,0.15); border: none; width: 32px; height: 32px; border-radius: 50%; cursor: pointer; font-size: 1rem; transition: background 0.2s; }
+.slider-arrow:hover { background: rgba(0,0,0,0.35); }
+.slider-arrow.prev { left: 0.6rem; }
+.slider-arrow.next { right: 0.6rem; }
 
 /* === SECTION HEADER === */
 .section-header {
